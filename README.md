@@ -41,7 +41,7 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
 ## Render へのデプロイ手順（例）
 1. Render で **New Web Service** を作成
 2. Build Command: `pip install -r requirements.txt`
-3. Start Command: `gunicorn app.main:app -k uvicorn.workers.UvicornWorker --bind 0.0.0.0:$PORT`
+3. Start Command: `gunicorn -k uvicorn.workers.UvicornWorker app.main:app --bind 0.0.0.0:$PORT`
 4. Environment Variables に `DATABASE_URL` を登録（Render の PostgreSQL を接続）
 5. 必要なら `PYTHON_VERSION=3.11` を追加
 6. デプロイ後、`/api/health` で稼働確認
